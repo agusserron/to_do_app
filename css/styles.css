@@ -1,20 +1,80 @@
-/* /css/styles.css */
-body {
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #fff;
+}
+
+.header {
+    background-color: #0091ea;
+    color: #fff;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 15px;
+}
+
+.nav i {
+    margin-right: 5px;
+}
+
+.sidebar {
+    padding: 20px;
+    border-right: 1px solid #e0e0e0;
+}
+
+.main-content {
+    display: flex;
     padding: 20px;
 }
 
-h1 {
-    text-align: center;
+.column {
+    flex: 1;
+    margin-right: 20px;
 }
 
-.tasks {
+.column:last-child {
+    margin-right: 0;
+}
+
+.column-header {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
-.todo, .done {
-    width: 45%;
+.column-header h3 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.add-task-btn {
+    background-color: #0091ea;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    font-size: 20px;
+    text-align: center;
 }
 
 ul {
@@ -22,25 +82,54 @@ ul {
     padding: 0;
 }
 
-li {
-    background: #f4f4f4;
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 5px;
+.task-card {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
+    height: 120px;
 }
 
-button {
-    margin-left: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
+.task-state {
+    background-color: #f28b82;
+    color: #fff;
     padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.task-state.done {
+    background-color: #81c995;
+}
+
+.task-title {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.task-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task-actions .btn {
+    background: none;
+    border: none;
     cursor: pointer;
 }
 
-button:hover {
-    background-color: #0056b3;
+.task-actions i {
+    color: #757575;
+    font-size: 18px;
+}
+
+.task-actions i:hover {
+    color: #333;
 }
