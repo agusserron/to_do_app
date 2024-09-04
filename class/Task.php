@@ -13,13 +13,24 @@ class Task {
     }
 
     public function updateTaskStatus($taskId, $completed) {
+        $url = $this->apiUrl . '/' . $taskId;
+
+        $data = json_encode(['completed' => $completed]);
+
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $this->apiUrl . "/$taskId");
+        curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PATCH");
-        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode(['completed' => $completed]));
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'Content-Type: application/json'
+        ]);
         $response = curl_exec($ch);
+
+        if (curl_errno($ch)) {
+            echo 'Error:' . curl_error($ch);
+        }
+
         curl_close($ch);
         return json_decode($response, true);
     }

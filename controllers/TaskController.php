@@ -1,7 +1,5 @@
 <?php
-
 require_once __DIR__ . '/../class/Task.php';
-
 
 class TaskController {
     private $task;
@@ -23,7 +21,6 @@ class TaskController {
     }
 }
 
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $controller = new TaskController();
 
@@ -36,7 +33,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $controller->deleteTask($taskId);
     }
 
-
     header("Location: ../index.php");
+    exit();
 }
 ?>
+
