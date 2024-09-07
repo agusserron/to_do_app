@@ -29,6 +29,7 @@ $tasks = $controller->listTasks();
         </aside>
         <section class="main-content">
             <div class="column">
+            <div class="column todo-column">
                 <div class="column-header">
                     <h3>To Do</h3>
                     <button class="add-task-btn">+</button>
@@ -57,7 +58,9 @@ $tasks = $controller->listTasks();
                     <?php endforeach; ?>
                 </ul>
             </div>
+            </div>
             <div class="column">
+            <div class="column done-column">
                 <div class="column-header">
                     <h3>Done</h3>
                     <button class="add-task-btn">+</button>
@@ -86,6 +89,7 @@ $tasks = $controller->listTasks();
                     <?php endforeach; ?>
                 </ul>
             </div>
+        </div>
         </section>
     </main>
     <script src="js/scripts.js"></script>

@@ -14,9 +14,9 @@ class Task {
 
     public function updateTaskStatus($taskId, $completed) {
         $url = $this->apiUrl . '/' . $taskId;
-
+    
         $data = json_encode(['completed' => $completed]);
-
+    
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PATCH");
@@ -26,14 +26,15 @@ class Task {
             'Content-Type: application/json'
         ]);
         $response = curl_exec($ch);
-
+    
         if (curl_errno($ch)) {
             echo 'Error:' . curl_error($ch);
         }
-
+    
         curl_close($ch);
         return json_decode($response, true);
     }
+    
 
     public function deleteTask($taskId) {
         $ch = curl_init();
@@ -44,5 +45,6 @@ class Task {
         curl_close($ch);
         return json_decode($response, true);
     }
+    
 }
 ?>

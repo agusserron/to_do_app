@@ -1,5 +1,6 @@
 <?php
-require_once __DIR__ . '/../class/Task.php';
+
+require_once './class/Task.php';
 
 class TaskController {
     private $task;
@@ -12,29 +13,54 @@ class TaskController {
         return $this->task->getAllTasks();
     }
 
-    public function updateTaskStatus($taskId, $completed) {
-        return $this->task->updateTaskStatus($taskId, $completed);
+    public function updateTaskStatus() {
+        $taskId = $_POST['task_id'];
+        $completed = $_POST['completed'] === 'true';
+
+        $response = $this->task->updateTaskStatus($taskId, $completed);
+        echo json_encode($response);
     }
 
-    public function deleteTask($taskId) {
-        return $this->task->deleteTask($taskId);
+    public function deleteTask() {
+        $taskId = $_POST['task_id'];
+
+        $response = $this->task->deleteTask($taskId);
+        echo json_encode($response);
+    }
+
+    public function handleRequest() {
+        $method = $_SERVER['REQUEST_METHOD'];
+    
+        if ($method === 'POST') {
+            $action = $_POST['action'];
+    
+            if ($action === 'update') {
+                $this->updateTaskStatus();
+            } elseif ($action === 'delete') {
+                $this->deleteTask();
+            }
+        } elseif ($method === 'PATCH') {
+            parse_str(file_get_contents("php://input"), $parsedInput);
+            $taskId = $parsedInput['task_id'] ?? null;
+            $completed = $parsedInput['completed'] ?? null;
+    
+            if ($taskId && $completed !== null) {
+                $this->updateTaskStatus($taskId, $completed);
+            }
+        } elseif ($method === 'DELETE') {
+            parse_str(file_get_contents("php://input"), $parsedInput);
+            $taskId = $parsedInput['task_id'] ?? null;
+    
+            if ($taskId) {
+                $this->deleteTask($taskId);
+            }
+        }
     }
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $controller = new TaskController();
-
-    if (isset($_POST['action']) && $_POST['action'] === 'update') {
-        $taskId = $_POST['task_id'];
-        $completed = $_POST['completed'] === 'true' ? true : false;
-        $controller->updateTaskStatus($taskId, $completed);
-    } elseif (isset($_POST['action']) && $_POST['action'] === 'delete') {
-        $taskId = $_POST['task_id'];
-        $controller->deleteTask($taskId);
-    }
-
-    header("Location: ../index.php");
-    exit();
-}
+$controller = new TaskController();
+$controller->handleRequest();
 ?>
+
+
 
