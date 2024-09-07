@@ -133,3 +133,21 @@ ul {
 .task-actions i:hover {
     color: #333;
 }
+
+
+/* CELULAR */
+@media (max-width: 600px) {
+    .main-content {
+        flex-direction: column;
+    }
+
+    .column {
+        margin-right: 0;
+        margin-bottom: 20px; 
+    }
+
+    .column:last-child {
+        margin-bottom: 0;
+    }
+}
+
