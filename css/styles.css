@@ -3,25 +3,63 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'telefonicaFontRegular';
+}
+
+@font-face {
+    font-family: 'telefonicaFontRegular';
+    src: url('../fonts/telefonica-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'telefonicaFontLight';
+    src: url('../fonts/telefonica-light-webfont.woff2') format('woff');
+    font-weight: normal; 
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'telefonicaFontBold';
+    src: url('../fonts/telefonica-bold-webfont.woff2') format('woff');
+    font-weight: normal; 
+    font-style: normal;
 }
 
 body {
     background-color: #fff;
+    font-family: 'telefonicaFontRegular';
+}
+
+h5 {
+    background-color: #fff;
+    font-family: 'telefonicaFontLight';
 }
 
 .header {
-    background-color: #0091ea;
+    background-color: #019BEF;
     color: #fff;
-    padding: 15px;
+    padding: 15px 50px 15px 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
+.span {
+    font-size: 10px !important;
+    font-family: 'telefonicaFontLight';
+}
+
+
+.logo img {
+    width: 48px;
+    height: 48px;
+}
+
 .logo {
-    font-size: 24px;
-    font-weight: bold;
+    max-width: 40px; 
+    height: 40px;
 }
 
 .nav a {
@@ -35,18 +73,18 @@ body {
 }
 
 .sidebar {
-    padding: 20px;
+    padding: 20px 20px 20px 50px;
     border-right: 1px solid #e0e0e0;
 }
 
 .main-content {
+    padding: 0px 0px 0px 50px;
     display: flex;
-    padding: 20px;
+    /* padding: 20px; */
 }
 
-.column {
-    flex: 1;
-    margin-right: 20px;
+.column-task {
+    margin-right: 3%;
 }
 
 .column:last-child {
@@ -63,10 +101,17 @@ body {
 .column-header h3 {
     font-size: 18px;
     font-weight: bold;
+    width: 400px;
 }
 
+.column-task:not(:last-child) {
+    border-right: 1px solid #ddd; 
+    padding-right: 20px; 
+}
+
+
 .add-task-btn {
-    background-color: #0091ea;
+    background-color: #019BEF;
     color: #fff;
     border: none;
     border-radius: 50%;
@@ -74,6 +119,7 @@ body {
     height: 30px;
     cursor: pointer;
     font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
     text-align: center;
 }
 
@@ -83,46 +129,58 @@ ul {
 }
 
 .task-card {
-    background-color: #f9f9f9;
+    width: 300px;
+    background-color: #fff; 
     padding: 15px;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
     margin-bottom: 15px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 120px;
+    position: relative;
 }
 
 .task-state {
-    background-color: #f28b82;
-    color: #fff;
-    padding: 5px 10px;
+    background-color: #f2c7c3;
+    color: #B22634;
+    padding: 2px 5px;
     border-radius: 4px;
     font-size: 12px;
+    font-family:'telefonicaFontBold';
     display: inline-block;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+    width: 75px;
 }
 
 .task-state.done {
-    background-color: #81c995;
+    background-color: #aaeabc;
+    color:#407F0F
 }
+
+
+
 
 .task-title {
     font-size: 16px;
     margin-bottom: 5px;
+    font-family: 'telefonicaFontLight';
 }
 
 .task-actions {
+    position: absolute;
+    top: 10px; 
+    right: 10px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    gap: 5px; 
 }
 
 .task-actions .btn {
     background: none;
     border: none;
     cursor: pointer;
+    font-size: 16px;
 }
 
 .task-actions i {
@@ -136,7 +194,7 @@ ul {
 
 
 /* CELULAR */
-@media (max-width: 600px) {
+@media (max-width: 960px) {
     .main-content {
         flex-direction: column;
     }
@@ -148,6 +206,9 @@ ul {
 
     .column:last-child {
         margin-bottom: 0;
+    }
+    .task-card {
+        width: 100%;
     }
 }
 

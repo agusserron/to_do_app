@@ -34,17 +34,16 @@ class Task {
       return $this->callApi($this->apiUrl);
     }
 
+
     public function updateTaskStatus($taskId, $completed) {
         $url = $this->apiUrl . '/' . $taskId;
         $data = json_encode(['completed' => $completed]);
-    
         return $this->callApi($url, 'PATCH', $data);
     }
     
 
     public function deleteTask($taskId) {
         $url = $this->apiUrl . '/' . $taskId;
-    
         return $this->callApi($url, 'DELETE');
     }
     
