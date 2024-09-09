@@ -42,8 +42,10 @@ para evitar recargar la página.
 - `/index.php`: Punto de entrada principal de la aplicación.
 - `/css/styles.css`: Estilos CSS de la aplicación.
 - `/js/scripts.js`: Archivo JavaScript que gestiona las interacciones con la API.
-- `/fonts: Carpeta con las fuentes utilizadas en el frontend.
+- `/fonts`: Carpeta con las fuentes utilizadas en el frontend.
+- `/img`: Carpeta con las imagenes utilizadas en el frontend.
+
 
 ### Autor
-Desarrollado por: Agustina Serron  
+Desarrollado por: Agustina Serrón  
 Email: agusserron@gmail.com

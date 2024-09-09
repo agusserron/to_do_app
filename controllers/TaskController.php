@@ -10,7 +10,7 @@ class TaskController {
     }
 
     public function listTasks() {
-        return $this->task->getAllTasks();
+        return $this->task->getLimitedTasks(5);
     }
 
     public function updateTaskStatus() {

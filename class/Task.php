@@ -30,20 +30,25 @@ class Task {
     
     
     
-    public function getAllTasks() {
-      return $this->callApi($this->apiUrl);
+    public function getLimitedTasks($limit = 5) {
+        $tasks = $this->callApi($this->apiUrl);
+        
+       
+        return array_slice($tasks, 0, $limit);
     }
 
 
     public function updateTaskStatus($taskId, $completed) {
         $url = $this->apiUrl . '/' . $taskId;
         $data = json_encode(['completed' => $completed]);
+    
         return $this->callApi($url, 'PATCH', $data);
     }
     
 
     public function deleteTask($taskId) {
         $url = $this->apiUrl . '/' . $taskId;
+    
         return $this->callApi($url, 'DELETE');
     }
     
